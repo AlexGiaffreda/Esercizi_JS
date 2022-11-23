@@ -20,6 +20,7 @@ function calculateSalary(role) {
       return "1500€";
         break;
 }
+
 }
 
 const ceoSalary = calculateSalary('ceo');
