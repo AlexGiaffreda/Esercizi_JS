@@ -1,32 +1,32 @@
 const isLogged = true;
 
-function firstPromise(isLogged) {
+const myNewPromise = (x) => {
     return new Promise((resolve, reject) => {
-        let random = Math.random();
-
-        if(isLogged == true){
-            resolve(random)
-        
-        }else {
-            reject(new Error("Not logged"));
-        }
+            if (x == true) {
+                resolve(Math.random());
+            } else {
+                reject(new Error ("error"));
+            }
     })
 }
 
-function secondPromise(parameter){
+const secondPromise = (y) => {
     return new Promise((resolve, reject) => {
+            if (y > 0.5) {
+                resolve({ name: "John", age: 24 });
+            } else {
+                reject(new Error("error"));
+            }
+        })
+}
 
-        if(parameter > 0.5){
-            resolve({name: "John", age: 24})
-        
-        }else{
-            reject(new Error("No user data"));
-        }
-    })
-};
+myNewPromise(isLogged)
+.then((second) => {
+    console.log(second);
+    return second;
+})
 
-firstPromise(isLogged)
-.then(secondPromise)
+.then((second) => secondPromise(second))
 .then((print) => console.log(print))
-.catch((err) => console.log(err))
-.finally(() =>  console.log("Complete"));
+.catch((err) => console.error(err))
+.finally(() => console.log("complete"))
