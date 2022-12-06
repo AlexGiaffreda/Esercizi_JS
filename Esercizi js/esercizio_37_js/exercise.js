@@ -1,4 +1,4 @@
-const number = 15;
+const number = 8;
 
 let p = new Promise((resolve, reject) => {
     if (number > 10) {

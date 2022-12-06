@@ -1,31 +1,36 @@
 const isLogged = true;
 
-function firstPromise(isLogged) {
+const myNewPromise = (x) => {
     return new Promise((resolve, reject) => {
-        let random = Math.random();
+        setTimeout(() => {
+            if (x == true) {
+                resolve(Math.random());
+            } else {
+                reject("error");
+            }
+        }, 3000)
+    })
 
-        if(isLogged == true){
-            resolve(random)
-        
-        }else {
-            reject("error")
-        }
+}
+
+const secondPromise = (y) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (y > 0.5) {
+                resolve({ name: "John", age: 24 });
+            } else {
+                reject("error");
+            }
+        }, 1500);
     })
 }
 
-function secondPromise(parameter){
-    return new Promise((resolve, reject) => {
+myNewPromise(isLogged)
+.then((second) => {
+    console.log(second);
+    return second;
+})
 
-        if(parameter > 0.5){
-            resolve({name: "John", age: 24})
-        
-        }else{
-            reject("error")
-        }
-    })
-};
-
-firstPromise(isLogged)
-.then(secondPromise)
+.then((second) => secondPromise(second))
 .then((print) => console.log(print))
-.catch((err) => console.log(err)) 
+.catch((err) => console.error(err))
