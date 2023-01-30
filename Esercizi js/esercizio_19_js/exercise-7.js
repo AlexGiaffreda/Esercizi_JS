@@ -39,3 +39,5 @@ console.log(person.fullName);
 person.firstName = 'Maria';
 person.lastName = 'Verdi';
 console.log(person.fullName);
+
+// evviva edosauro //
